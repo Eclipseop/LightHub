@@ -2,6 +2,8 @@ version: '3'
 services:
     hub:
         restart: always
+        ports:
+            - "3000:49160"
         build:
             dockerfile: dockerfile
             context: ./
