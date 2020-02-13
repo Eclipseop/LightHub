@@ -1,0 +1,7 @@
+version: '3'
+services:
+    hub:
+        restart: always
+        build:
+            dockerfile: dockerfile
+            context: ./
