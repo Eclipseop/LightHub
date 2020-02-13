@@ -1,0 +1,148 @@
+doctype html
+html
+    head
+        title Yeet Sauce
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js')
+        style.
+            * {
+                margin: 0;
+                padding: 0;
+                font-weight: bold;
+                font-family: "Helvetica";
+                text-decoration: none;
+                outline: none;
+            }
+            body {
+                background-color: #222222;
+            }
+            button {
+                border-radius: 5px;
+                background-color: #1AFFD5 !important;
+                border-color: #1AFFD5;
+                border-style: solid;
+            }
+            .mainbuttons {
+                text-align: center;
+            }
+            .mainbuttons button {
+                width: 25%;
+                height: 100px;
+                margin: 5px 5px 5px 5px;
+                box-shadow: 0px 3px 8px #000000;
+            }
+            td {
+                padding: 0px 50px 0px 50px
+            }
+            table {
+                padding-top: 3%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            table button {
+                text-size-adjust: none;
+                height: 100px;
+                width: 100px;
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+            .weathershit {
+                font-size: 48px;
+                position: absolute;
+                bottom: 0;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                color: white;
+                margin-top: -100px;
+            }
+        script.
+            document.addEventListener("DOMContentLoaded", function(){
+                var temp = document.getElementsByClassName("temp")[0];
+                var skytext = document.getElementsByClassName("skytext")[0];
+
+                axios.get('/weather')
+                    .then((res) => {
+                        temp.innerHTML = res.data + "°";
+                    })
+                    .catch((err) => {
+                        console.err(err);
+                    })
+
+                axios.get('/skytext')
+                    .then((res) => {
+                        skytext.innerHTML = res.data;
+                    })
+                    .catch((err) => {
+                        console.err(err);
+                    })
+
+            });
+
+            setInterval(function() {
+                window.location.reload();
+            }, 300000);
+
+            function setGlow(id, on) {
+                var prop = document.getElementById(id);
+                console.log(on)
+                if (on == true) {
+                    prop.style.boxShadow = "rgb(136, 136, 136) 0px 0px 30px 10px";
+                } else {
+                    if (on == undefined) {
+                        if (prop.style.boxShadow == "" || prop.style.boxShadow == "rgb(136, 136, 136) 0px 0px 0px") {
+                            console.log('nani');
+                             prop.style.boxShadow = "rgb(136, 136, 136) 0px 0px 30px 10px";
+                            return
+                        }
+                        console.log(prop.style.boxShadow)
+                    }
+                    prop.style.boxShadow = "0px 0px 0px #888888";
+                }
+            }
+
+            function get(param) {
+                for (i = 1; i < 6; i++) {
+                    if (param.includes("On")) {
+                        setGlow(i, true)
+                    } else {
+                        setGlow(i, false)
+                    }
+                }
+
+                axios.get('/' + param)
+                    .then((res) => {
+                        console.log(res)
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+            }
+
+            function toggleSpecific(lightId) {
+                console.log('/toggle?id=' + lightId)
+                axios.get('/toggle?id=' + lightId)
+                    .then((res) => {
+                        setGlow(lightId)
+                        console.log(res)
+                    })
+                    .catch((err) => {
+                        console.err(err)
+                    })
+            }
+    body
+        div(class="mainbuttons")
+            button(onClick="get('toggleAllOn')") All Lights On
+            button(onClick="get('toggleAllOff')") All Lights Off
+        table(style='width=100%')
+            tr
+                td
+                    button(onClick="toggleSpecific('1')", id='1') Desk Lamp
+                td
+                    button(onClick="toggleSpecific('2')", id='2') Hallway Light
+                td
+                    button(onClick="toggleSpecific('5')", id='5') Bedroom Light
+                td
+                    button(onClick="toggleSpecific('3')", id='3') Door Light
+                td
+                    button(onClick="toggleSpecific('4')", id='4') Living room Lamp
+        div(class="weathershit")
+            p(class="temp") 0
+            p(class="skytext") 0
