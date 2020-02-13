@@ -1,6 +1,6 @@
 let huejay = require('huejay')
 let client = new huejay.Client({
-    host: '192.168.1.13',
+    host: '192.168.1.2',
     username: 'XqnFP8kAdqLaSud3e5friD8z9Co2Xf9hupvtRZcQ'
 });
 
