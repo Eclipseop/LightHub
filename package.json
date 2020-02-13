@@ -2,7 +2,9 @@
     "name": "lighthub",
     "version": "1.0.0",
     "dependencies": {
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "pug": "^2.0.4",
+        "weather-js": "^2.0.0"
     },
     "description": "yeet",
     "main": "app.js",
