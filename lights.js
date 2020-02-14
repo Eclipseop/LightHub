@@ -12,6 +12,7 @@ module.exports = {
                     light.on = true;
                     client.lights.save(light);
                 }
+                console.log('Turning all lights on!')
             })
     },
     toggleAllOff: function() {
@@ -21,6 +22,7 @@ module.exports = {
                     light.on = false;
                     client.lights.save(light);
                 }
+                console.log('Turning all lights off!')
             })
     },
     toggle: function(id) {
