@@ -55,6 +55,9 @@ html
                 margin-top: -100px;
             }
         script.
+            const BOX_SHADOW = "rgb(136, 136, 136) 0px 0px 30px 10px";
+            const NO_SHADOW = "rgb(0, 0, 0) 0px 0px 0px"
+
             document.addEventListener("DOMContentLoaded", function(){
                 var temp = document.getElementsByClassName("temp")[0];
                 var skytext = document.getElementsByClassName("skytext")[0];
@@ -83,7 +86,7 @@ html
                             var key = entry;
                             var value = data[key];
                             if (value == true) {
-                                document.getElementById(key).style.boxShadow = "rgb(136, 136, 136) 0px 0px 30px 10px"
+                                document.getElementById(key).style.boxShadow = BOX_SHADOW;
                             }
                         }
                     })
@@ -98,17 +101,17 @@ html
                 var prop = document.getElementById(id);
                 console.log(on)
                 if (on == true) {
-                    prop.style.boxShadow = "rgb(136, 136, 136) 0px 0px 30px 10px";
+                    prop.style.boxShadow = BOX_SHADOW;
                 } else {
                     if (on == undefined) {
                         if (prop.style.boxShadow == "" || prop.style.boxShadow == "rgb(136, 136, 136) 0px 0px 0px") {
                             console.log('nani');
-                             prop.style.boxShadow = "rgb(136, 136, 136) 0px 0px 30px 10px";
+                            prop.style.boxShadow = BOX_SHADOW;
                             return
                         }
                         console.log(prop.style.boxShadow)
                     }
-                    prop.style.boxShadow = "0px 0px 0px #888888";
+                    prop.style.boxShadow = NO_SHADOW;
                 }
             }
 
