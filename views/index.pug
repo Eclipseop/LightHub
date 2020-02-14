@@ -65,7 +65,7 @@ html
                     })
                     .catch((err) => {
                         console.err(err);
-                    })
+                    });
 
                 axios.get('/skytext')
                     .then((res) => {
@@ -73,6 +73,19 @@ html
                     })
                     .catch((err) => {
                         console.err(err);
+                    });
+
+                axios.get('/lightState')
+                    .then((res) => {
+                        var data = JSON.parse(JSON.stringify(res.data)); //js btw xddd
+                        console.log(data);
+                        for (let entry in data) {
+                            var key = entry;
+                            var value = data[key];
+                            if (value == true) {
+                                document.getElementById(key).style.boxShadow = "rgb(136, 136, 136) 0px 0px 30px 10px"
+                            }
+                        }
                     })
 
             });

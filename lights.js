@@ -32,10 +32,21 @@ module.exports = {
                     var idd = light.id;
                     if (idd == id) {
                         light.on = !light.on
+                        console.log('Toggling light ' + idd + '!')
                         client.lights.save(light)
                         return light.on
                     }
                 }
+            })
+    },
+    getLightState: function(callback) {
+        let json = {};
+        client.lights.getAll()
+            .then(lights => {
+                for (let light of lights) {
+                    json[light.id] = light.on;
+                }
+                callback(json)
             })
     }
 }
