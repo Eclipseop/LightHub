@@ -29,8 +29,7 @@ module.exports = {
         client.lights.getAll()
             .then(lights => {
                 for (let light of lights) {
-                    var idd = light.id;
-                    if (idd == id) {
+                    if (light.id == id) {
                         light.on = !light.on
                         console.log('Toggling light ' + idd + '!')
                         client.lights.save(light)
