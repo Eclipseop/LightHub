@@ -31,7 +31,7 @@ module.exports = {
                 for (let light of lights) {
                     if (light.id == id) {
                         light.on = !light.on
-                        console.log('Toggling light ' + idd + '!')
+                        console.log('Toggling light ' + id + '!')
                         client.lights.save(light)
                         return light.on
                     }
