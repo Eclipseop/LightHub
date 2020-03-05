@@ -46,13 +46,15 @@ html
                 margin-right: -10px;
             }
             .weathershit {
-                font-size: 48px;
                 position: absolute;
                 bottom: 0;
                 padding-bottom: 10px;
                 padding-left: 5px;
-                color: white;
                 margin-top: -100px;
+            }
+            .info {
+                font-size: 48px;
+                color: white;
             }
         script.
             const BOX_SHADOW = "rgb(136, 136, 136) 0px 0px 30px 10px";
@@ -96,6 +98,11 @@ html
             setInterval(function() {
                 window.location.reload();
             }, 300000);
+
+            setInterval(function () {
+                var time = new Date();
+                document.getElementsByClassName("time")[0].innerHTML = time.getHours() + ':' + time.getMinutes();
+            }, 1)
 
             function setGlow(id, on) {
                 var prop = document.getElementById(id);
@@ -159,6 +166,8 @@ html
                     button(onClick="toggleSpecific('3')", id='3') Door Light
                 td
                     button(onClick="toggleSpecific('4')", id='4') Living room Lamp
-        div(class="weathershit")
-            p(class="temp") 0
-            p(class="skytext") 0
+        div(class="info")
+            p(class="time") 0
+            div(class="weathershit")
+                p(class="temp") 0
+                p(class="skytext") 0
