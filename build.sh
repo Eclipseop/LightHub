@@ -1,5 +1,4 @@
-cd ~/Desktop/docker_bot/OtterBot
+cd ~/Desktop/LightHub
 git pull
-cd ~/Desktop/docker_bot
-docker build --rm -t otterbot .
+docker-compose build
 docker-compose up
