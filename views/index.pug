@@ -69,29 +69,11 @@ html
             const NO_SHADOW = "rgb(0, 0, 0) 0px 0px 0px"
 
             document.addEventListener("DOMContentLoaded", () => {
-                loadData();
+                loadWeather()
+                loadLights()
             });
 
-            function loadData() {
-                var temp = document.getElementsByClassName("temp")[0];
-                var skytext = document.getElementsByClassName("skytext")[0];
-
-                axios.get('/weather')
-                    .then((res) => {
-                        temp.innerHTML = res.data + "°";
-                    })
-                    .catch((err) => {
-                        console.err(err);
-                    });
-
-                axios.get('/skytext')
-                    .then((res) => {
-                        skytext.innerHTML = res.data;
-                    })
-                    .catch((err) => {
-                        console.err(err);
-                    });
-
+            function loadLights() {
                 axios.get('/lightState')
                     .then((res) => {
                         var data = JSON.parse(JSON.stringify(res.data)); //js btw xddd
@@ -108,10 +90,36 @@ html
                     })
             }
 
+            function loadWeather() {
+                const temp = document.getElementsByClassName("temp")[0];
+                const skytext = document.getElementsByClassName("skytext")[0];
+
+                axios.get('/weather')
+                    .then((res) => {
+                        temp.innerHTML = res.data + "°";
+                    })
+                    .catch((err) => {
+                        console.err(err);
+                    });
+
+                axios.get('/skytext')
+                    .then((res) => {
+                        skytext.innerHTML = res.data;
+                    })
+                    .catch((err) => {
+                        console.err(err);
+                    });
+            }
+
             setInterval(() => {
-                console.log('loaded hehe')
-                loadData();
+                console.log('Load light info')
+                loadLights()
             }, 1000)
+            
+            setInterval(() => {
+                console.log('Load light info')
+                loadWeather()
+            }, 300000)
 
             setInterval(() => {
                 var time = new Date();
