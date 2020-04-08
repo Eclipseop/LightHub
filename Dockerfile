@@ -1,6 +1,3 @@
-FROM alpine/git
-RUN git clone https://github.com/Eclipseop/LightHub.git
-
 FROM node:10
 WORKDIR /usr/src/app
 COPY package*.json ./
