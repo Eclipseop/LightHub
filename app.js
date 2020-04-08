@@ -1,11 +1,13 @@
 const express = require('express')
 const pug = require('pug')
+const path = require('path')
 const app = express()
 
-const light = require('./lights')
-const weather = require('./weather')
+const light = require('./public/js/lights')
+const weather = require('./public/js/weather')
 
 app.set('view engine', 'pug')
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.render('index')
