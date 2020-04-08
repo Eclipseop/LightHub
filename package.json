@@ -3,9 +3,10 @@
     "version": "1.0.0",
     "dependencies": {
         "express": "^4.17.1",
+        "huejay": "^1.9.0",
         "pug": "^2.0.4",
-        "weather-js": "^2.0.0",
-        "huejay": "^1.9.0"
+        "tuyapi": "github:codetheweb/tuyapi",
+        "weather-js": "^2.0.0"
     },
     "description": "yeet",
     "main": "app.js",

@@ -38,6 +38,19 @@ module.exports = {
                 }
             })
     },
+    turnOn: function(id) {
+        client.lights.getAll()
+            .then(lights => {
+                for (let light of lights) {
+                    if (light.id == id) {
+                        light.on = true
+                        console.log('turning on light ' + id)
+                        client.lights.save(light)
+                        return true
+                    }
+                }
+            })
+    },
     getLightState: function(callback) {
         let json = {};
         client.lights.getAll()

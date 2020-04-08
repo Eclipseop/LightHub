@@ -49,4 +49,9 @@ app.get('/lightState', (req, res) => {
     light.getLightState(reply)
 })
 
+app.get('/dog', (req, res) => {
+    light.toggleAllOff()
+    light.turnOn(5)
+})
+
 app.listen(3000, () => console.log('Listening!'))
