@@ -68,7 +68,7 @@ html
             const BOX_SHADOW = "rgb(136, 136, 136) 0px 0px 30px 10px";
             const NO_SHADOW = "rgb(0, 0, 0) 0px 0px 0px"
 
-            document.addEventListener("DOMContentLoaded", function(){
+            document.addEventListener("DOMContentLoaded", () => {
                 loadData();
             });
 
@@ -108,12 +108,12 @@ html
                     })
             }
 
-            setInterval(function() {
-                console.log('loaded info hehe')
+            setInterval(() => {
+                console.log('loaded hehe')
                 loadData();
-            }, 1000);
+            }, 1000)
 
-            setInterval(function () {
+            setInterval(() => {
                 var time = new Date();
                 var hour = time.getHours();
                 var am = "am";

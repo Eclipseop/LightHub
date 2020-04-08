@@ -5,7 +5,7 @@ let client = new huejay.Client({
 });
 
 module.exports = {
-    toggleAllOn: function() {
+    toggleAllOn: () => {
         client.lights.getAll()
             .then(lights => {
                 for (let light of lights) {
@@ -15,7 +15,7 @@ module.exports = {
                 console.log('Turning all lights on!')
             })
     },
-    toggleAllOff: function() {
+    toggleAllOff: () => {
         client.lights.getAll()
             .then(lights => {
                 for (let light of lights) {
@@ -25,7 +25,7 @@ module.exports = {
                 console.log('Turning all lights off!')
             })
     },
-    toggle: function(id) {
+    toggle: (id) => {
         client.lights.getAll()
             .then(lights => {
                 for (let light of lights) {
@@ -38,7 +38,7 @@ module.exports = {
                 }
             })
     },
-    setState: function(id, state) {
+    setState: (id, state) => {
         client.lights.getAll()
             .then(lights => {
                 for (let light of lights) {
@@ -48,7 +48,7 @@ module.exports = {
                 }
             })
     },
-    getLightState: function(callback) {
+    getLightState: (callback) => {
         let json = {};
         client.lights.getAll()
             .then(lights => {

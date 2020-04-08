@@ -1,8 +1,8 @@
 var weather = require('weather-js')
 
 module.exports = {
-    getTemp: function(callback) {
-        weather.find({ search: 'Grand Blanc, MI', degreeType: 'F' }, function(err, res) {
+    getTemp: (callback) => {
+        weather.find({ search: 'Grand Blanc, MI', degreeType: 'F' }, (err, res) => {
             if (res == undefined) {
                 callback('0');
             } else {
@@ -10,8 +10,8 @@ module.exports = {
             }
         });
     },
-    getSkytext: function(callback) {
-        weather.find({ search: 'Grand Blanc, MI', degreeType: 'F' }, function(err, res) {
+    getSkytext: (callback) => {
+        weather.find({ search: 'Grand Blanc, MI', degreeType: 'F' }, (err, res) => {
             if (res == undefined) {
                 callback('0');
             } else {
