@@ -101,6 +101,9 @@ html
                             var value = data[key];
                             if (value == true) {
                                 document.getElementById(key).style.boxShadow = BOX_SHADOW;
+                            } else {
+                                document.getElementById(key).style.boxShadow = NO_SHADOW;
+
                             }
                         }
                     })
