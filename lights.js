@@ -38,16 +38,13 @@ module.exports = {
                 }
             })
     },
-    turnOn: function(id) {
+    setState: function(id, state) {
         client.lights.getAll()
             .then(lights => {
                 for (let light of lights) {
-                    if (light.id == id) {
-                        light.on = true
-                        console.log('turning on light ' + id)
-                        client.lights.save(light)
-                        return true
-                    }
+                    if (light.id != id) continue
+                    light.on = state
+                    console.log(`Turning light ${id} state to ${state}`)
                 }
             })
     },

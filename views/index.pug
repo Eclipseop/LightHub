@@ -103,7 +103,6 @@ html
                                 document.getElementById(key).style.boxShadow = BOX_SHADOW;
                             } else {
                                 document.getElementById(key).style.boxShadow = NO_SHADOW;
-
                             }
                         }
                     })
@@ -112,7 +111,7 @@ html
             setInterval(function() {
                 console.log('loaded info hehe')
                 loadData();
-            }, 5000);
+            }, 1000);
 
             setInterval(function () {
                 var time = new Date();
@@ -126,33 +125,7 @@ html
                 document.getElementsByClassName("time")[0].innerHTML = hour + ':' + (min < 10 ? "0" + min : min) + am;
             }, 1000)
 
-            function setGlow(id, on) {
-                var prop = document.getElementById(id);
-                console.log(on)
-                if (on == true) {
-                    prop.style.boxShadow = BOX_SHADOW;
-                } else {
-                    if (on == undefined) {
-                        if (prop.style.boxShadow == "" || prop.style.boxShadow == "rgb(136, 136, 136) 0px 0px 0px") {
-                            console.log('nani');
-                            prop.style.boxShadow = BOX_SHADOW;
-                            return
-                        }
-                        console.log(prop.style.boxShadow)
-                    }
-                    prop.style.boxShadow = NO_SHADOW;
-                }
-            }
-
             function get(param) {
-                for (i = 1; i < 6; i++) {
-                    if (param.includes("On")) {
-                        setGlow(i, true)
-                    } else {
-                        setGlow(i, false)
-                    }
-                }
-
                 axios.get('/' + param)
                     .then((res) => {
                         console.log(res)
@@ -162,10 +135,8 @@ html
             }
 
             function toggleSpecific(lightId) {
-                console.log('/toggle?id=' + lightId)
                 axios.get('/toggle?id=' + lightId)
                     .then((res) => {
-                        setGlow(lightId)
                         console.log(res)
                     })
                     .catch((err) => {
@@ -180,6 +151,8 @@ html
         table(style='width=100%')
             tr
                 td
+                    button(onClick="toggleSpecific('4')", id='4') Living room Lamp
+                td
                     button(onClick="toggleSpecific('1')", id='1') Desk Lamp
                 td
                     button(onClick="toggleSpecific('2')", id='2') Hallway Light
@@ -187,8 +160,6 @@ html
                     button(onClick="toggleSpecific('5')", id='5') Bedroom Light
                 td
                     button(onClick="toggleSpecific('3')", id='3') Door Light
-                td
-                    button(onClick="toggleSpecific('4')", id='4') Living room Lamp
         div(class="info")
             div(class="weathershit")
                 p(class="temp") 0

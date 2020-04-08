@@ -6,7 +6,6 @@ const light = require('./lights')
 const weather = require('./weather')
 
 app.set('view engine', 'pug')
-app.use(express.static('/public'))
 
 app.get('/', (req, res) => {
     res.render('index')
@@ -51,7 +50,7 @@ app.get('/lightState', (req, res) => {
 
 app.get('/dog', (req, res) => {
     light.toggleAllOff()
-    light.turnOn(5)
+    light.setState(5, true)
 })
 
 app.listen(3000, () => console.log('Listening!'))
