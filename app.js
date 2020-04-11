@@ -29,18 +29,14 @@ app.get('/toggle', (req, res) => {
     res.send(result)
 })
 
-app.get('/weather', (req, res) => {
-    function reply(content) {
-        res.send(content)
-    }
-    weather.getTemp(reply)
+app.get('/weather', async(req, res) => {
+    const data = await weather.getData('temperature')
+    res.send(data)
 })
 
-app.get('/skytext', (req, res) => {
-    function reply(content) {
-        res.send(content)
-    }
-    weather.getSkytext(reply)
+app.get('/skytext', async(req, res) => {
+    const data = await weather.getData('skytext')
+    res.send(data)
 })
 
 app.get('/lightState', (req, res) => {
