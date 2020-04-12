@@ -48,7 +48,7 @@ setInterval(() => {
 }, 1000)
 
 setInterval(() => {
-    console.log('Load light info')
+    console.log('Load weather info')
     loadWeather()
 }, 300000)
 
