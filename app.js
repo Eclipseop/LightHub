@@ -48,7 +48,7 @@ app.get('/lightState', (req, res) => {
 
 app.get('/dog', (req, res) => {
     light.toggleAllOff()
-    light.setState(1, true)
+    light.setState(5, true)
     res.send(true)
 })
 
