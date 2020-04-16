@@ -48,7 +48,8 @@ app.get('/lightState', (req, res) => {
 
 app.get('/dog', (req, res) => {
     light.toggleAllOff()
-    light.setState(5, true)
+    light.setState(1, true)
+    res.send(true)
 })
 
 app.listen(3000, () => console.log('Listening!'))

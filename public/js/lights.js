@@ -45,6 +45,7 @@ module.exports = {
                     if (light.id != id) continue
                     light.on = state
                     console.log(`Turning light ${id} state to ${state}`)
+                    client.lights.save(light)
                 }
             })
     },

@@ -65,6 +65,7 @@ setInterval(() => {
 }, 1000)
 
 function get(param) {
+    console.log(`param: ${param}`)
     axios.get('/' + param)
         .then((res) => {
             console.log(res)
