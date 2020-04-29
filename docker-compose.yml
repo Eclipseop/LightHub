@@ -1,9 +1,0 @@
-version: '3'
-services:
-    hub:
-        restart: always
-        ports:
-            - "49160:3000"
-        build:
-            dockerfile: Dockerfile
-            context: ./
