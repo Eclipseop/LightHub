@@ -49,14 +49,16 @@ module.exports = {
                 }
             })
     },
-    getLightState: (callback) => {
-        let json = {};
-        client.lights.getAll()
-            .then(lights => {
-                for (let light of lights) {
-                    json[light.id] = light.on;
-                }
-                callback(json)
-            })
+    getLightState: () => {
+        return new Promise((res, rej) => {
+            let json = {};
+            client.lights.getAll()
+                .then(lights => {
+                    for (let light of lights) {
+                        json[light.id] = light.on;
+                    }
+                    return res(json)
+                })
+        })
     }
 }

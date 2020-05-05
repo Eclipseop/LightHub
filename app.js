@@ -39,11 +39,9 @@ app.get('/skytext', async(req, res) => {
     res.send(data)
 })
 
-app.get('/lightState', (req, res) => {
-    function reply(content) {
-        res.send(content)
-    }
-    light.getLightState(reply)
+app.get('/lightState', async (req, res) => {
+    const data = await light.getLightState()
+    res.send(data)
 })
 
 app.get('/dog', (req, res) => {
