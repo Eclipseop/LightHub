@@ -8,13 +8,16 @@ const express = require("express");
 const router = express.Router();
 
 function toggleAll(on) {
-	client.lights.getAll().then((lights) => {
-		for (let light of lights) {
-			light.on = on;
-			client.lights.save(light);
-		}
-		console.log(`Setting all light states to ${on}.`);
-	});
+	client.lights
+		.getAll()
+		.then((lights) => {
+			for (let light of lights) {
+				light.on = on;
+				client.lights.save(light);
+			}
+			console.log(`Setting all light states to ${on}.`);
+		})
+		.catch((err) => console.log(err));
 }
 
 router.get("/turnAllOn", (req, res) => {
@@ -45,15 +48,18 @@ router.get("/getLightState", (req, res) => {
 
 router.get("/toggle", (req, res) => {
 	const id = req.query.id;
-	client.lights.getAll().then((lights) => {
-		for (let light of lights) {
-			if (light.id != id) continue;
-			light.on = !light.on;
-			console.log(`Setting light ${id} to ${light.on}`);
-			client.lights.save(light);
-			res.send({ state: light.on });
-		}
-	});
+	client.lights
+		.getAll()
+		.then((lights) => {
+			for (let light of lights) {
+				if (light.id != id) continue;
+				light.on = !light.on;
+				console.log(`Setting light ${id} to ${light.on}`);
+				client.lights.save(light);
+				res.send({ state: light.on });
+			}
+		})
+		.catch((err) => console.log(err));
 });
 
 module.exports = router;
