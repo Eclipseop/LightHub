@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { properties } from "../properties";
 
 class Footer extends Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ class Footer extends Component {
 
 	loadData() {
 		axios
-			.get("http://localhost:4000/weather/temp")
+			.get(`${properties.server_ip}/weather/temp`)
 			.then((res) => {
 				this.setState({ temp: res.data });
 			})
@@ -22,7 +23,7 @@ class Footer extends Component {
 			});
 
 		axios
-			.get("http://localhost:4000/weather/skytext")
+			.get(`${properties.server_ip}/weather/skytext`)
 			.then((res) => {
 				this.setState({ skytext: res.data });
 			})

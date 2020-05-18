@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { properties } from "../properties";
 
 class Button extends Component {
 	constructor(props) {
@@ -15,7 +16,7 @@ class Button extends Component {
 			if (!this.props.id) return;
 			axios
 				.get(
-					`http://localhost:4000/lights/getLightState?id=${this.props.id}`
+					`${properties.server_ip}/lights/getLightState?id=${this.props.id}`
 				)
 				.then((res) => {
 					const data = res.data;
@@ -26,8 +27,8 @@ class Button extends Component {
 
 	handleClick() {
 		const route = this.props.route
-			? this.props.route
-			: `http://localhost:4000/lights/toggle?id=${this.props.id}`;
+			? `${properties.server_ip}${this.props.route}`
+			: `${properties.server_ip}/lights/toggle?id=${this.props.id}`;
 
 		axios
 			.get(route)
@@ -38,10 +39,6 @@ class Button extends Component {
 			.catch((err) => {
 				console.log(err);
 			});
-	}
-
-	change(data) {
-		this.setState({ on: data });
 	}
 
 	render() {

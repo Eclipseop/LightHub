@@ -17,12 +17,12 @@ class App extends Component {
 						<Button
 							className="column"
 							info="All On"
-							route="http://localhost:4000/lights/turnAllOn"
+							route="/lights/turnAllOn"
 						/>
 						<Button
 							className="column"
 							info="All Off"
-							route="http://localhost:4000/lights/turnAllOff"
+							route="/lights/turnAllOff"
 						/>
 					</div>
 					<br></br>
