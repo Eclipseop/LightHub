@@ -33,12 +33,9 @@ router.get("/turnAllOff", (req, res) => {
 router.get("/getLightState", (req, res) => {
 	const id = req.query.id;
 	client.lights
-		.getAll()
-		.then((lights) => {
-			for (let light of lights) {
-				if (light.id != id) continue;
-				res.json(light);
-			}
+		.getById(id)
+		.then((light) => {
+			res.json(light);
 		})
 		.catch((err) => {
 			res.send(err);
@@ -49,15 +46,12 @@ router.get("/getLightState", (req, res) => {
 router.get("/toggle", (req, res) => {
 	const id = req.query.id;
 	client.lights
-		.getAll()
-		.then((lights) => {
-			for (let light of lights) {
-				if (light.id != id) continue;
-				light.on = !light.on;
-				console.log(`Setting light ${id} to ${light.on}`);
-				client.lights.save(light);
-				res.send({ state: light.on });
-			}
+		.getById(id)
+		.then((light) => {
+			light.on = !light.on;
+			console.log(`Setting light ${id} to ${light.on}`);
+			client.lights.save(light);
+			res.send({ state: light.on });
 		})
 		.catch((err) => console.log(err));
 });
