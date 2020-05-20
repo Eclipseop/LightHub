@@ -55,8 +55,8 @@ class Footer extends Component {
 					className="column subtitle has-text-white is-size-3 has-text-right"
 					style={{
 						marginTop: "auto",
-						paddingTop: "10px",
-						paddingRight: "0px",
+						marginBottom: "10px",
+						padding: "0px 0px 0px 0px",
 					}}
 				>
 					{new Date().toLocaleTimeString([], { timeStyle: "short" })}

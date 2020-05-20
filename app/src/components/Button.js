@@ -21,6 +21,9 @@ class Button extends Component {
 				.then((res) => {
 					const data = res.data;
 					this.setState({ on: data.state.attributes.on });
+				})
+				.catch((err) => {
+					console.log(err);
 				});
 		}, 1000);
 	}
