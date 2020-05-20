@@ -47,7 +47,7 @@ class Button extends Component {
 				<button
 					className={`button ${
 						this.state.on === true ? "is-primary " : ""
-					}`}
+					} is-rounded`}
 					onClick={this.handleClick}
 				>
 					{this.props.info}
