@@ -1,34 +1,45 @@
 import React, { Component } from "react";
 import Button from "./Button";
 
-/*
 function Buttons() {
-	const data = {
-		4: "Living Room Lamp",
-		1: "Desk Lamp",
-		2: "Hallway Lamp",
-		5: "Bedroom Light",
-		3: "Door Light",
-	};
-	
-	const list = data.map((entry) => {
-		console.log(entry);
-		return <Button className="column" info="Living Room Lamp" id="4" />;
-    });
-    
+	const data = [
+		{
+			id: 1,
+			desc: "Desk Lamp"
+		},
+		{
+			id: 2,
+			desc: "Hallway Lamp"
+		},
+		{
+			id: 3,
+			desc: "Door Light"
+		},
+		{
+			id: 4,
+			desc: "Living Room Lamp"
+		},
+		{
+			id: 5,
+			desc: "Bedroom Light"
+		}
+	]
+
+	return (
+		<div className="columns is-centered buttons is-normal">
+			{data.map((entry) =>
+				<Button className="column" info={entry.desc} id={entry.id} />
+			)}
+		</div>
+	)
+
 }
-*/
+
 
 class ButtonGroup extends Component {
 	render() {
 		return (
-			<div className="columns is-centered buttons is-normal">
-				<Button className="column" info="Living Room Lamp" id="4" />
-				<Button className="column" info="Desk Lamp" id="1" />
-				<Button className="column" info="Hallway Light" id="2" />
-				<Button className="column" info="Bedroom Light" id="5" />
-				<Button className="column" info="Door Light" id="3" />
-			</div>
+			<Buttons></Buttons>
 		);
 	}
 }
