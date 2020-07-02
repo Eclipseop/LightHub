@@ -24,6 +24,11 @@ class App extends Component {
 							info="All Off"
 							route="/lights/turnAllOff"
 						/>
+						<Button
+							className="column"
+							info="Disco"
+							route="/lights/disco"
+						/>
 					</div>
 					<br></br>
 					<ButtonGroup />
