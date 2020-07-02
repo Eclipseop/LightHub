@@ -11,7 +11,7 @@ class Button extends Component {
 		};
 	}
 
-	componentDidMount() {
+	componentDidMount(props) {
 		setInterval(() => {
 			if (!this.props.id) return;
 			axios
@@ -37,7 +37,11 @@ class Button extends Component {
 			.get(route)
 			.then((res) => {
 				console.log(res.data.state);
-				this.setState({ on: res.data.state });
+				if (this.props.info === "Disco") {
+					this.setState({ on: !this.state.on });
+				} else {
+					this.setState({ on: res.data.state });
+				}
 			})
 			.catch((err) => {
 				console.log(err);

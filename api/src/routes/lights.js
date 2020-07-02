@@ -60,6 +60,16 @@ let disco = false;
 
 router.get("/disco", (req, res) => {
 	disco = !disco;
+	console.log(`Setting disco to ${disco}`);
+	if (!disco) {
+		client.lights.getAll().then((lights) => {
+			for (let light of lights) {
+				light.hue = 41362;
+				light.saturation = 89;
+				client.lights.save(light);
+			}
+		});
+	}
 	res.send("re");
 });
 
