@@ -29,12 +29,15 @@ class Button extends Component {
 	}
 
 	handleClick() {
-		this.props.onClick();
+		if (this.props.onClick) this.props.onClick();
 		const route = this.props.route
 			? `${properties.server_ip}${this.props.route}`
 			: `${properties.server_ip}/lights/toggle?id=${this.props.id}`;
 
-		/*
+		if (!this.props.route) {
+			return;
+		}
+
 		axios
 			.get(route)
 			.then((res) => {
@@ -48,7 +51,6 @@ class Button extends Component {
 			.catch((err) => {
 				console.log(err);
 			});
-			*/
 	}
 
 	render() {
