@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", (req, res) => {
-	console.log(`New connection from ${req.ip});
+	console.log(`New connection from ${req.ip}`);
 	res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
