@@ -73,13 +73,34 @@ router.get("/disco", (req, res) => {
 	res.send("re");
 });
 
+router.get("/update", (req, res) => {
+	const { lightId, brightness, hue, sat } = req.query;
+	console.log(req.query);
+	client.lights
+		.getById(lightId)
+		.then((light) => {
+			light.on = true;
+			light.saturation = sat == 1 ? 255 : 0;
+
+			light.brightness = brightness;
+
+			const ratio = hue / 360;
+			const weird_hue = Math.round(ratio * 65535);
+			light.hue = weird_hue;
+
+			client.lights.save(light);
+			res.send(light);
+		})
+		.catch((err) => console.log(err));
+});
+
 let hue = 0;
 setInterval(() => {
 	if (!disco) return;
 	client.lights.getAll().then((lights) => {
 		for (let light of lights) {
 			light.saturation = 254;
-			if (hue + 1000 > 65000) hue = 0;
+			if (hue + 300 > 65000) hue = 0;
 			hue += 300;
 			light.hue = hue;
 			client.lights.save(light);

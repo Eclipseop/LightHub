@@ -11,7 +11,7 @@ class Button extends Component {
 		};
 	}
 
-	componentDidMount(props) {
+	componentDidMount() {
 		setInterval(() => {
 			if (!this.props.id) return;
 			axios
@@ -25,14 +25,16 @@ class Button extends Component {
 				.catch((err) => {
 					console.log(err);
 				});
-		}, 1000);
+		}, 1500);
 	}
 
 	handleClick() {
+		this.props.onClick();
 		const route = this.props.route
 			? `${properties.server_ip}${this.props.route}`
 			: `${properties.server_ip}/lights/toggle?id=${this.props.id}`;
 
+		/*
 		axios
 			.get(route)
 			.then((res) => {
@@ -46,6 +48,7 @@ class Button extends Component {
 			.catch((err) => {
 				console.log(err);
 			});
+			*/
 	}
 
 	render() {
