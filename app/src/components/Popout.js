@@ -8,7 +8,6 @@ import { get } from "axios";
 class Popout extends Component {
 	constructor(props) {
 		super(props);
-		this.handleChange = this.handleChange.bind(this);
 		this.state = {
 			brightness: 50,
 			color: {},
@@ -17,10 +16,6 @@ class Popout extends Component {
 
 	componentDidMount() {
 		bulmaSlider.attach();
-	}
-
-	handleChange(event) {
-		this.setState({ brightness: event.target.value });
 	}
 
 	submit = () => {
@@ -61,7 +56,11 @@ class Popout extends Component {
 							min="0"
 							max="100"
 							type="range"
-							onChange={this.handleChange}
+							onChange={(event) =>
+								this.setState({
+									brightness: event.target.value,
+								})
+							}
 						></input>
 						<output htmlFor="sliderWithValue">50</output>
 						<CirclePicker

@@ -5,7 +5,6 @@ import { properties } from "../properties";
 class Button extends Component {
 	constructor(props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
 		this.state = {
 			on: false,
 		};
@@ -28,20 +27,16 @@ class Button extends Component {
 		}, 1500);
 	}
 
-	handleClick() {
+	handleClick = () => {
 		if (this.props.onClick) this.props.onClick();
-		const route = this.props.route
-			? `${properties.server_ip}${this.props.route}`
-			: `${properties.server_ip}/lights/toggle?id=${this.props.id}`;
-
 		if (!this.props.route) {
 			return;
 		}
+		const route = `${properties.server_ip}${this.props.route}`;
 
 		axios
 			.get(route)
 			.then((res) => {
-				console.log(res.data.state);
 				if (this.props.info === "Disco") {
 					this.setState({ on: !this.state.on });
 				} else {
@@ -51,7 +46,7 @@ class Button extends Component {
 			.catch((err) => {
 				console.log(err);
 			});
-	}
+	};
 
 	render() {
 		return (

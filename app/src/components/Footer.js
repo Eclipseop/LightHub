@@ -9,10 +9,9 @@ class Footer extends Component {
 			temp: 0,
 			skytext: "",
 		};
-		this.loadData = this.loadData.bind(this);
 	}
 
-	loadData() {
+	loadData = () => {
 		axios
 			.get(`${properties.server_ip}/weather/temp`)
 			.then((res) => {
@@ -30,7 +29,7 @@ class Footer extends Component {
 			.catch((err) => {
 				console.log(err);
 			});
-	}
+	};
 
 	componentDidMount() {
 		this.loadData();

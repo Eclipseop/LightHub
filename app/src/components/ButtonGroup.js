@@ -5,7 +5,6 @@ import Popout from "./Popout";
 class ButtonGroup extends Component {
 	constructor(props) {
 		super(props);
-		//this.handleClick = this.handleClick.bind(this);
 		this.state = {
 			currentId: 0,
 		};
@@ -34,12 +33,6 @@ class ButtonGroup extends Component {
 		},
 	];
 
-	/*
-	handleClick(id) {
-		console.log("ree");
-		this.setState({ currentId: id });
-	}
-	*/
 	handleClick = (id) => {
 		console.log(`Setting current id to ${id}`);
 		this.setState({ currentId: id });
