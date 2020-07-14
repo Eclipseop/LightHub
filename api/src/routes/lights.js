@@ -82,11 +82,13 @@ router.get("/update", (req, res) => {
 			light.on = true;
 			light.saturation = sat == 1 ? 255 : 0;
 
-			light.brightness = brightness * 2.5;
+			if (hue && saturation) {
+				light.brightness = brightness * 2.5;
 
-			const ratio = hue / 360;
-			const weird_hue = Math.round(ratio * 65535);
-			light.hue = weird_hue;
+				const ratio = hue / 360;
+				const weird_hue = Math.round(ratio * 65535);
+				light.hue = weird_hue;
+			}
 
 			client.lights.save(light);
 			res.send(light);
