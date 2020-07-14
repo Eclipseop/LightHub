@@ -82,7 +82,7 @@ router.get("/update", (req, res) => {
 			light.on = true;
 			light.saturation = sat == 1 ? 255 : 0;
 
-			light.brightness = brightness;
+			light.brightness = brightness * 2.5;
 
 			const ratio = hue / 360;
 			const weird_hue = Math.round(ratio * 65535);
