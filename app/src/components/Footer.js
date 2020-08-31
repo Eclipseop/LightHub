@@ -35,28 +35,7 @@ class Footer extends Component {
 	componentDidMount() {
 		this.loadData();
 		setInterval(this.loadData, 300000);
-		setInterval(() => {
-			axios
-				.get(`${properties.waterpi_ip}/getTimeLeft`)
-				.then((res) => {
-					this.setState({ water: res.data });
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		}, 1000);
 	}
-
-	formatTime = () => {
-		let time = this.state.water;
-		if (time > 3600) {
-			return `${Math.round(time / 3600)} hrs`;
-		} else if (time > 60) {
-			return `${Math.round(time / 60)} mins`;
-		} else {
-			return `${Math.round(time)} secs`;
-		}
-	};
 
 	render() {
 		return (
@@ -72,16 +51,6 @@ class Footer extends Component {
 						{this.state.skytext}
 					</h2>
 				</div>
-				<h2
-					className="column subtitle has-text-white is-size-3 has-text-centered"
-					style={{
-						marginTop: "auto",
-						marginBottom: "10px",
-						padding: "0px 0px 0px 0px",
-					}}
-				>
-					Next Watering: {this.formatTime()}
-				</h2>
 				<h2
 					className="column subtitle has-text-white is-size-3 has-text-right"
 					style={{
