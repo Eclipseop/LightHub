@@ -3,8 +3,16 @@ import "bulma/css/bulma.css";
 import Button from "./components/Button";
 import ButtonGroup from "./components/ButtonGroup";
 import Footer from "./components/Footer";
+import PlantInfo from "./components/PlantInfo";
 
 class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			plant: true,
+		};
+	}
+
 	render() {
 		return (
 			<div
@@ -32,6 +40,14 @@ class App extends Component {
 					</div>
 					<br></br>
 					<ButtonGroup />
+					<Button
+						info="Plant Info"
+						onClick={() => this.setState({ plant: true })}
+					/>
+					<PlantInfo
+						active={this.state.plant}
+						onClose={() => this.setState({ plant: false })}
+					/>
 				</div>
 				<Footer />
 			</div>
