@@ -34,6 +34,7 @@ class Popout extends Component {
 		get(
 			`${properties.server_ip}/lights/toggle?id=${this.props.id}`
 		).catch((err) => console.log(err));
+		this.props.onClose();
 	};
 
 	render() {

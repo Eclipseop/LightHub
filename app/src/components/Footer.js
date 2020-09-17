@@ -41,7 +41,13 @@ class Footer extends Component {
 		return (
 			<div
 				className="columns"
-				style={{ bottom: "0", position: "absolute", width: "100%" }}
+				style={{
+					bottom: "0px",
+					position: "absolute",
+					width: "100%",
+					paddingBottom: "0px",
+					marginBottom: "0px",
+				}}
 			>
 				<div className="column has-text-left">
 					<h1 className="title has-text-white is-size-1">

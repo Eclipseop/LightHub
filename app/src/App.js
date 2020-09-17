@@ -9,15 +9,20 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			plant: true,
+			plant: false,
 		};
 	}
 
 	render() {
 		return (
 			<div
-				style={{ height: "100vh" }}
-				className="has-background-dark no-margin no-padding"
+				style={{
+					//height: "100vh",
+					height: "100%",
+					padding: "0",
+					margin: "0",
+				}}
+				className="has-background-dark"
 			>
 				<div className="container">
 					<br></br>
